@@ -1,0 +1,31 @@
+<?php
+
+return [
+
+    'common_first_name' => 'Please enter first name.',
+    'login_email' => 'Please enter email id.',
+    'common_user_type' => 'Please select user type.',
+    'valid_mobile_number' => 'Mobile number must contain only digits.',
+    'mobile_length' => 'Mobile number cannot contain more than 10 digits.',
+    'common_error_header' => 'The following errors were found on the page',
+    'common_success_header' => 'Success!',
+    'common_invalid_file_format' => 'Invalid file format.',
+    'common_file_size_5mb' => 'File size should not be greater than 5MB.',
+    'common_password' => 'Please enter password.',
+    'common_password_len8' => 'Password must contain at least 8 characters.',
+    'common_confirm_password' => 'Please enter confirm password.',
+    'common_password_match' => 'Password and confirm password do not match.',
+    'common_customer' => 'Please select customer.',
+    'esrtimate_date' => 'Please select estimate date.',
+    'select_date' => 'Please select date.',
+    'common_cloth' => 'Please select kapad.',
+    'common_cloth_meter' => 'Please enter kapad meter.',
+    'common_serial_name' => 'Please enter serial name.',
+    'common_serial_number' => 'Please select serial number.',
+    'common_size_name' => 'Please enter size.',
+    'common_use_cloth_name' => 'Please enter kapad in meter used per piece.',
+    'common_price_name' => 'Please enter price per piece.',
+    'common_qty_error' => 'Please enter qty.',
+    'common_autosearch_error' => 'Please enter search name.',
+    'common_min_autosearch_error' => 'Please enter minimum 2 character for search.',
+];
