@@ -46,13 +46,13 @@
                                 <div class="card-block">
                                     <div class="col-lg-4">
                                     <!--<div class="card-title mb-4" style="color: #8bbf6a; font-size: 16px;">Bill Details</div>-->
-                                    <div class="card-title mb-3" style="font-size: 22px;">Chitthi No: {{$bills->customer_bill_id}}</div>
+                                    <div class="card-title mb-3" style="font-size: 22px;">Chitthi No: {{$bills->bill_prefix}}-{{$bills->customer_bill_id}}</div>
                                     <div class="card-title mb-3" style="font-size: 14px;">Name: {{$bills->name}}</div>
                                     </div>
                                     
                                     <div class="col-lg-6">
                                     @if(isset($bills->serial_name) && $bills->serial_name != '')
-                                    <div class="card-title mb-3" style="font-size: 22px;">Serial No:  {{$bills->serial_name}}</div>
+                                    <div class="card-title mb-3" style="font-size: 22px;">Design No:  {{$bills->serial_name}}</div>
                                     @endif    
                                     <div class="card-title mb-3" style="font-size: 14px;">Estimate Date: {{date("M j, Y",strtotime($bills->estimate_date))}}</div>                  
                                     </div>

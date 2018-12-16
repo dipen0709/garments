@@ -1,0 +1,2 @@
+ALTER TABLE `bills` ADD `bill_prefix` VARCHAR(5) NULL DEFAULT NULL AFTER `id`;
+UPDATE `bills` SET `bill_prefix`='B' WHERE 1

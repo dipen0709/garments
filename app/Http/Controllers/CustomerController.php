@@ -44,7 +44,7 @@ class CustomerController extends CommonController{
         if(isset($term) && $term != ''){
             $customer_data->where('name','like','%' .$term . '%');
         }
-        $result = $customer_data->orderBy('name','ASC')->paginate(100);
+        $result = $customer_data->orderBy('name','ASC')->paginate(25);
         $this->data['customers'] = $result;
         $return_data['cloth_master'] = ClothMaster::select('id','name')->where('chr_delete','=',0)->get();
         $this->data['user'] = Auth::user();

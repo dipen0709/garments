@@ -12,7 +12,7 @@
                                                 <tr class="text-primary">
                                                     <th>Bill id</th>
                                                     <th>Customer Name</th>
-                                                    <th>Serial Number</th>
+                                                    <th>Design Number</th>
                                                     <th>Size</th>
                                                     <th>Qty</th>
                                                     <th>Price</th>

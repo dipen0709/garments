@@ -6,7 +6,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-block">
-                <h5 class="card-title mb-4">Chitthi No. -  {{$bills->customer_bill_id}} </h5>
+                <h5 class="card-title mb-4">Chitthi No:  {{$bills->bill_prefix}}-{{$bills->customer_bill_id}} </h5>
                 <form class="forms-sample" id="bill" name="bill" method="POST" enctype="multipart/form-data" action="{{ route('bill.update')}}"
                       autocomplete="off">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

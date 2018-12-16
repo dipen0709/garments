@@ -152,6 +152,7 @@ class BillController extends CommonController{
     public function store(Request $request){
         $customer_bill_count = Bill::where('customer_id','=',$request->customer_id)->count();
         $bill =  new Bill();
+        $bill->bill_prefix = 'B';
         $bill->customer_id = $request->customer_id;
         $bill->customer_bill_id = $customer_bill_count + 1;
         $bill->estimate_date = date('Y-m-d', strtotime($request->estimate_date)); 

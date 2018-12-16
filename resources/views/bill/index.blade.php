@@ -15,7 +15,7 @@
                                             <thead>
                                                 <tr class="text-primary">
                                                     <th>Chitthi No.</th>
-                                                    <th>Serial No.</th>
+                                                    <th>Design No.</th>
                                                     <th>Name</th>
                                                     <th>Estimate Date</th>
                                                     <th>{{trans('users.createdat')}}</th>
@@ -40,7 +40,7 @@
                                                ?>
                                                 @endif
                                                 <tr class="{{$class}}" >
-                                                    <td>{{$data->customer_bill_id}}</td>
+                                                    <td>{{$data->bill_prefix}}-{{$data->customer_bill_id}}</td>
                                                     <td>{{$data->serial_name}}</td>
                                                     <td>{{$data->name}}</td>
                                                     <td>{{date("M j, Y",strtotime($data->estimate_date))}}</td>
