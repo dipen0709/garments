@@ -10,9 +10,9 @@
                                         <table class="table center-aligned-table ">
                                             <thead>
                                                 <tr class="text-primary">
-                                                    <th>Bill id</th>
-                                                    <th>Customer Name</th>
-                                                    <th>Design Number</th>
+                                                    <th>Chitthi id</th>
+                                                    <th>Karigar Name</th>
+                                                    <th>Design Name</th>
                                                     <th>Size</th>
                                                     <th>Qty</th>
                                                     <th>Price</th>

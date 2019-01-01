@@ -15,8 +15,8 @@
                                             <thead>
                                                 <tr class="text-primary">
                                                     <th>Chitthi No.</th>
-                                                    <th>Design No.</th>
-                                                    <th>Name</th>
+                                                    <th>Design Name</th>
+                                                    <th>Karigar Name</th>
                                                     <th>Estimate Date</th>
                                                     <th>{{trans('users.createdat')}}</th>
                                                     <th></th>
@@ -31,12 +31,12 @@
                                                 <?php $class = ''; ?>
                                                 @if($data->order_count == 0)
                                                <?php  
-                                                      $alert_days = trans('users.alert_days');
-                                                      $date =  date('Y-m-d', strtotime($data->estimate_date));
-                                                      $today_date = date('Y-m-d');
-                                                      if($today_date > $date){
-                                                          $class = 'table-info';
-                                                      }
+//                                                      $alert_days = trans('users.alert_days');
+//                                                      $date =  date('Y-m-d', strtotime($data->estimate_date));
+//                                                      $today_date = date('Y-m-d');
+//                                                      if($today_date > $date){
+//                                                          $class = 'table-info';
+//                                                      }
                                                ?>
                                                 @endif
                                                 <tr class="{{$class}}" >

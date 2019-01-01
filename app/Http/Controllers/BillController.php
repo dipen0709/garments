@@ -60,7 +60,7 @@ class BillController extends CommonController{
             });
             $return_data['customer_name'] = Customer::select('name')->where('id','=',$customer_search)->first();
         }
-        $result = $bill_data->groupBy('bills.id')->orderBy('customers.name','ASC')->orderBy('bills.customer_bill_id','ASC')->paginate(100);
+        $result = $bill_data->groupBy('bills.id')->orderBy('customers.name','ASC')->orderBy('bills.bill_prefix','ASC')->orderBy('bills.customer_bill_id','ASC')->paginate(100);
         $return_data['bills'] = $result;
         
         $return_data['title'] = 'Chitthi';
@@ -87,7 +87,7 @@ class BillController extends CommonController{
                     $query->where('bills.customer_bill_id','like','%' .$term . '%')->orWhere('customers.name','like','%' .$term . '%');
             });
         }
-        $result = $bill_data->groupBy('bills.id')->orderBy('customers.name','ASC')->orderBy('bills.customer_bill_id','ASC')->paginate(100);
+        $result = $bill_data->groupBy('bills.id')->orderBy('customers.name','ASC')->orderBy('bills.bill_prefix','ASC')->orderBy('bills.customer_bill_id','ASC')->paginate(100);
         $return_data['bills'] = $result;
         $return_data['title'] = 'Closed Chitthi';
         $return_data['closed'] = 1;
@@ -145,18 +145,24 @@ class BillController extends CommonController{
         $bill->customer_id = $request->customer_id;
         $bill->estimate_date = date('Y-m-d', strtotime($request->estimate_date)); 
         $bill->serial_id = $request->serial_id;
+        $bill->predefined_order_detail = $request->predefined_order_detail;
         $bill->save();
         return redirect()->route('bill');
     }
     
     public function store(Request $request){
-        $customer_bill_count = Bill::where('customer_id','=',$request->customer_id)->count();
+        $customer_bill = Bill::select('customer_bill_id')->where('bill_prefix','=',$request->bill_prefix)->where('customer_id','=',$request->customer_id)->orderBy('customer_bill_id','desc')->first();
+        $customer_bill_count = 0;
+        if(!empty($customer_bill)){
+            $customer_bill_count = $customer_bill->customer_bill_id;
+        }
         $bill =  new Bill();
-        $bill->bill_prefix = 'B';
+        $bill->bill_prefix = $request->bill_prefix;
         $bill->customer_id = $request->customer_id;
         $bill->customer_bill_id = $customer_bill_count + 1;
         $bill->estimate_date = date('Y-m-d', strtotime($request->estimate_date)); 
         $bill->serial_id = $request->serial_id;
+        $bill->predefined_order_detail = $request->predefined_order_detail;
         $bill->save();
         return redirect()->route('bill');
     }
@@ -171,7 +177,7 @@ class BillController extends CommonController{
                 $customer->mobile = $request->mobile;
                 $customer->save();
                 $return_data['flag'] = 1;
-                $return_data['msg'] = 'Customer added successfully.';
+                $return_data['msg'] = 'Karigar added successfully.';
                 
                 $customers =  Customer::select('name','id')->where('chr_delete','=',0)->get();
                 $return_data['count'] =  $customers->count();
@@ -179,11 +185,11 @@ class BillController extends CommonController{
                 
             } else {
                 $return_data['flag'] = 0;
-                $return_data['msg'] = 'Customer name already exist.';
+                $return_data['msg'] = 'Karigar name already exist.';
             }
         } else {
             $return_data['flag'] = 0;
-            $return_data['msg'] = 'Please enter customer name.';
+            $return_data['msg'] = 'Please enter Karigar name.';
         }
         return json_encode($return_data);
     }
@@ -342,10 +348,10 @@ class BillController extends CommonController{
     });</script>';
                 }
             } else {
-                $html = '<div class="form-group">Size not available for selected serial number.</div>';
+                $html = '<div class="form-group">Size not available for selected design name.</div>';
             }
         } else {
-            $html  = '<div class="form-group">Please select valid serial number.</div>';
+            $html  = '<div class="form-group">Please select valid design name.</div>';
         }
         return $html;
     }

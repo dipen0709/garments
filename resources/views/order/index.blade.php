@@ -52,7 +52,7 @@
                                     
                                     <div class="col-lg-6">
                                     @if(isset($bills->serial_name) && $bills->serial_name != '')
-                                    <div class="card-title mb-3" style="font-size: 22px;">Design No:  {{$bills->serial_name}}</div>
+                                    <div class="card-title mb-3" style="font-size: 22px;">Design Name:  {{$bills->serial_name}}</div>
                                     @endif    
                                     <div class="card-title mb-3" style="font-size: 14px;">Estimate Date: {{date("M j, Y",strtotime($bills->estimate_date))}}</div>                  
                                     </div>
@@ -185,7 +185,7 @@
                                     
                                     
                                     
-                                    <button type="button" class="btn btn-outline-primary payment_customer">Payment to Customer</button>
+                                    <button type="button" class="btn btn-outline-primary payment_customer">Payment to Karigar</button>
                                     <button type="button" class="btn btn-outline-primary payment_details">Click to view payment details</button>
                                     
                                     <div class="form-group">&nbsp;</div>
@@ -206,7 +206,7 @@
                                                 @if(isset($assign_kapad) && !empty($assign_kapad) && $assign_kapad->count() > 0)
                                                 @foreach($assign_kapad as $data)
                                                 <tr>
-                                                    <td>{{$bills->customer_bill_id}}</td>
+                                                    <td>{{$bills->bill_prefix}}-{{$bills->customer_bill_id}}</td>
                                                     <td>{{$bills->name}}</td>
                                                     <td>{{$data->name}}</td>
                                                     <td>{{str_replace(".00","", $data->cloth_meter)}}</td>
@@ -249,7 +249,7 @@
                                                 @if(isset($next_bills) && !empty($next_bills) && count($next_bills) > 0)
                                                 @foreach($next_bills as $data)
                                                 <tr>
-                                                    <td>{{$data->customer_bill_id}}</td>
+                                                    <td>{{$data->bill_prefix}}-{{$data->customer_bill_id}}</td>
                                                     <td>{{$data->name}}</td>
                                                     <td>{{date("M j, Y",strtotime($data->estimate_date))}}</td>
                                                     <td>{{date("M j, Y h:i A",strtotime($data->created_at))}} </td>
@@ -285,9 +285,9 @@
                                                         <input type="hidden" name="bill_id" id="bill_id" value="{{ $bills->id }}">
                                                         <div class="modal-body input-text-field-line">
                                                             <div class="form-group col-sm-4">
-                                                            <label>Customer</label> 
+                                                            <label>Karigar</label> 
                                                             <select id="customer_id" name="customer_id" class="form-control m-b-sm" >
-                                                                        <option value="">Select Customer</option>
+                                                                        <option value="">Select Karigar</option>
                                                                           @if(!empty($customers))
                                                                           @foreach($customers as $customer)
                                                                            <?php  $selected = "";  ?>
@@ -346,7 +346,7 @@
                                                  style="overflow: inherit;">
                                                  <div class="modal-header">
                                               <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                              <h4 class="modal-title">Payment to Customer</h4>
+                                              <h4 class="modal-title">Payment to Karigar</h4>
                                             </div>
                                                 <form  id="payment-customer" name="payment-customer" method="POST" enctype="multipart/form-data" action="{{ route('payment.store')}}" autocomplete="off"> 
                                                 <div class="modal-body">

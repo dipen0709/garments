@@ -43,15 +43,16 @@ class HomeController extends CommonController
         $today_date = date('Y-m-d');
         
         $bill_data = Bill::select('bills.*','customers.name')->leftjoin('customers', 'bills.customer_id', '=', 'customers.id');
-        $bill_data->leftjoin('orders', function($join)
-    {
-        $join->on('orders.bill_id', '=', 'bills.id');
-        $join->on('orders.chr_delete', '=', DB::raw("0"));
-
-    })->where('bills.chr_delete','=',0)
+//        $bill_data->leftjoin('orders', function($join)
+//    {
+//        $join->on('orders.bill_id', '=', 'bills.id');
+//        $join->on('orders.chr_delete', '=', DB::raw("0"));
+//
+//    })->whereNull('orders.id');
+            $bill_data->where('bills.chr_delete','=',0)
             ->where('bills.is_close','=',0)
-                ->whereNull('orders.id')->whereDate('bills.estimate_date', '<', $today_date);
-        $result = $bill_data->groupBy('bills.id')->orderBy('customers.name','ASC')->orderBy('bills.customer_bill_id','ASC')->paginate(25);
+                ->whereDate('bills.estimate_date', '<', $today_date);
+        $result = $bill_data->groupBy('bills.id')->orderBy('customers.name','ASC')->orderBy('bills.bill_prefix','ASC')->orderBy('bills.customer_bill_id','ASC')->paginate(50);
         $return_data['bills'] = $result;
         $return_data['title'] = 'Dashboard';
 //        echo '<pre>'; print_r($result); die;

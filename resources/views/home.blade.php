@@ -41,8 +41,8 @@
                                     <table class="table center-aligned-table ">
                                             <thead>
                                                 <tr class="text-primary">
-                                                    <th>Bill No.</th>
-                                                    <th>Name</th>
+                                                    <th>Chitthi No.</th>
+                                                    <th>Karigar Name</th>
                                                     <th>Estimate Date</th>
                                                     <th>{{trans('users.createdat')}}</th>
                                                     <th></th>
@@ -55,7 +55,7 @@
                                                 @if(isset($bills) && !empty($bills) && count($bills) > 0)
                                                 @foreach($bills as $data)
                                                 <tr>
-                                                    <td>{{$data->customer_bill_id}}</td>
+                                                    <td>{{$data->bill_prefix}}-{{$data->customer_bill_id}}</td>
                                                     <td>{{$data->name}}</td>
                                                     <td>{{date("M j, Y",strtotime($data->estimate_date))}}</td>
                                                     <td>{{date("M j, Y h:i A",strtotime($data->created_at))}} </td>
@@ -78,6 +78,7 @@
                                             </tbody>
                                         </table>
                                 </div>
+                                {{ $bills->links() }}
                             </div>
                         </div>
                     </div>

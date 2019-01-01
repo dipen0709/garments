@@ -200,6 +200,35 @@ class SizeWithPriceController extends CommonController{
  
     }
      
+    public static function copyDesign(Request $request){
+        $design_name = $request->design_name;
+        $design_id = $request->design_id;
+       
+        if($design_id && $design_name){
+            $check_avg = Sizewithprice::where('serial_name','=',$design_name)->first();
+            if(empty($check_avg)){
+                $copy_avg = Sizewithprice::where('id','=',$design_id)->first();
+                if(!empty($copy_avg)){
+                    $average = new Sizewithprice();
+                    $average->cloth_details = $copy_avg->cloth_details;
+                    $average->serial_name = $design_name;
+                    $average->save();
+                    $return_data['flag'] = 1;
+                    $return_data['msg'] = 'Design name added successfully.';
+                } else {
+                    $return_data['flag'] = 0;
+                    $return_data['msg'] = 'Something going wrong. Please refresh and try again.';
+                }
+            } else {
+                $return_data['flag'] = 0;
+                $return_data['msg'] = 'Design name already exist.';
+            }
+        } else {
+            $return_data['flag'] = 0;
+            $return_data['msg'] = 'Please enter design name.';
+        }
+        return json_encode($return_data);
+    }
     
 }
 

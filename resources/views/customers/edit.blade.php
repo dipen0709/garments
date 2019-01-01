@@ -22,7 +22,7 @@
                         <input type="text" maxlength="10" class="form-control p-input" id="mobile" name="mobile" placeholder="{{trans('users.mobile')}}" value="{{$customers->mobile}}">
                     </div>
                     <div class="form-group">
-                        <label>Customer Activate / Deactivate</label>
+                        <label>Karigar Activate / Deactivate</label>
                      <div class="form-check"><label class="form-check-label">
                          <input type="radio" class="form-check-input" name="chr_delete" id="chr_delete_0" value="0" @if(isset($customers->chr_delete) && $customers->chr_delete == 0) {{ "checked=''" }} @endif > Activate</label>
                      </div>

@@ -19,7 +19,7 @@
                         <input type="text" maxlength="10" class="form-control p-input" id="mobile" name="mobile" placeholder="{{trans('users.mobile')}}" value="">
                     </div>
                     <div class="form-group">
-                    <label>Customer Activate / Deactivate</label>
+                    <label>Karigar Activate / Deactivate</label>
                     <div class="form-check"><label class="form-check-label">
                         <input type="radio" class="form-check-input" name="chr_delete" id="chr_delete_0" checked='checked' value="0" checked=""> Activate</label>
                     </div>

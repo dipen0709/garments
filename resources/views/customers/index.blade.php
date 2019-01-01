@@ -6,13 +6,13 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-block">
-                                    <div class="card-title mb-4">Welcome to the customers dashboard. All customers are listed below.
+                                    <div class="card-title mb-4">Welcome to the Karigars dashboard. All Karigars are listed below.
 </div>
                                     <div class="table-responsive">
                                         <table class="table center-aligned-table ">
                                             <thead>
                                                 <tr class="text-primary">
-                                                    <th>{{trans('users.firstname')}}</th>
+                                                    <th>Karigar Name</th>
                                                     <th>{{trans('users.mobile')}}</th>
                                                     <th>{{trans('users.createdat')}}</th>
                                                     <th>Assign Kapad</th>

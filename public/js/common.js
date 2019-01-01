@@ -422,6 +422,7 @@ $('.payment_details').click(function (e) {
     $('#payment_details').modal('show');
     return false;
 });
+
 $('.assign_kapad').click(function (e) {
     $('#assign_kapad').modal('show');
     var name = $(this).data('name');
@@ -462,7 +463,7 @@ $('.insert-customer').click(function (e) {
         $.toast({
             heading: langauge_var.common_error_header,
             showHideTransition: 'slide',
-            text: 'Please enter customer name.',
+            text: 'Please enter Karigar name.',
             icon: 'error'
         });
     } else {
@@ -476,7 +477,7 @@ $('.insert-customer').click(function (e) {
                 if (data.flag) {
                     if (data.count) {
                         var c_data = data.customer;
-                        var opt = '<option>Select Customer</option>';
+                        var opt = '<option>Select Karigar</option>';
                         for (var a = 0; a < c_data.length; a++) {
                             opt += '<option value="' + c_data[a].id + '">' + c_data[a].name + '</option>';
                         }
@@ -564,7 +565,7 @@ $('.insert-order').click(function (e) {
         $.toast({
             heading: langauge_var.common_error_header,
             showHideTransition: 'slide',
-            text: 'Please select customer name.',
+            text: 'Please select Karigar name.',
             icon: 'error'
         });
         return false;
@@ -573,7 +574,7 @@ $('.insert-order').click(function (e) {
         $.toast({
             heading: langauge_var.common_error_header,
             showHideTransition: 'slide',
-            text: 'Please select serial number.',
+            text: 'Please select design number.',
             icon: 'error'
         });
         return false;
@@ -639,6 +640,57 @@ $('.insert-cloth').click(function (e) {
     }
 
 });
+
+$('.copy-average').click(function (e) {
+    $('#design_name').val('');
+    var design_id = $(this).data('id');
+    $('#design_id').val(design_id);
+    $('#copy-average').modal('show');
+    return false;
+});
+
+$('.insert-copy-design').click(function (e) {
+    var design_name = $('#design_name').val();
+    var design_id = $('#design_id').val();
+    if (!design_name) {
+        $.toast({
+            heading: langauge_var.common_error_header,
+            showHideTransition: 'slide',
+            text: 'Please enter design name.',
+            icon: 'error'
+        });
+    } else {
+        var _token = $("#_token").val();
+        $.ajax({
+            type: "post",
+            url: base_url + "copy-design",
+            data: {'_token': _token, 'design_id': design_id, 'design_name': design_name},
+            dataType: "json",
+            success: function (data) {
+                if (data.flag) {
+                    $.toast({
+                        heading: langauge_var.common_error_header,
+                        showHideTransition: 'slide',
+                        text: data.msg,
+                        icon: 'success'
+                    });
+                    $('#copy-average').modal('hide');
+                    location.reload();
+                } else {
+                    $.toast({
+                        heading: langauge_var.common_error_header,
+                        showHideTransition: 'slide',
+                        text: data.msg,
+                        icon: 'error'
+                    });
+                    return false;
+                }
+            }
+        });
+    }
+
+});
+
 
 $('.price_validate').keypress(function (event) {
     if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {

@@ -51,6 +51,7 @@ Route::post('/sizewithprice/store', array('as' => 'sizewithprice.store','routegr
 Route::get('/sizewithprice/{id}/edit', array('as' => 'sizewithprice.edit','routegroup' => 'sizewithprice', 'uses' => 'SizeWithPriceController@edit'));
 Route::get('/sizewithprice/{id}/delete', array('as' => 'sizewithprice.delete','routegroup' => 'sizewithprice', 'uses' => 'SizeWithPriceController@delete'));
 Route::post('/sizewithprice/update/{id}', array('as' => 'sizewithprice.update','routegroup' => 'sizewithprice', 'uses' => 'SizeWithPriceController@update'));
+Route::post('/copy-design', array('as' => 'sizewithprice.copy','routegroup' => 'sizewithprice', 'uses' => 'SizeWithPriceController@copyDesign'));
 
 Route::get('/order', array('as' => 'order', 'searchtype' => '6','routegroup' => 'order', 'uses' => 'OrderController@index'));
 Route::get('/order/{id}', array('as' => 'order.detail','routegroup' => 'bill', 'uses' => 'BillController@orderDetail'));
