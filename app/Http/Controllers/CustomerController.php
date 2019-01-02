@@ -60,7 +60,7 @@ class CustomerController extends CommonController{
         $customers = Customer::find($request->id);
         $return_data['customers'] = $customers;
         
-        if(!empty($customers) && count($customers) > 0) {
+        if(!empty($customers)) {
             return View('customers/edit', array_merge($this->data, $return_data))->render();
         } else {
             return redirect()->route('home');

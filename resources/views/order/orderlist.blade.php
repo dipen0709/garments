@@ -20,7 +20,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if(isset($order_data) && !empty($order_data) && count($order_data) > 0)
+                                                @if(isset($order_data) && !empty($order_data) && $order_data->count() > 0)
                                                 @foreach($order_data as $data)
                                                 <tr class="">
                                                     <td>{{$data->bill_number}}</td>

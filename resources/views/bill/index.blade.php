@@ -26,7 +26,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if(isset($bills) && !empty($bills) && count($bills) > 0)
+                                                @if(isset($bills) && !empty($bills))
                                                 @foreach($bills as $data)
                                                 <?php $class = ''; ?>
                                                 @if($data->order_count == 0)

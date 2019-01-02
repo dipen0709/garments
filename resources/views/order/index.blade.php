@@ -231,7 +231,7 @@
                                         </table>
                                     </div>
                                     
-                                    @if(!empty($next_bills) && count($next_bills) > 0)
+                                    @if(!empty($next_bills) && $next_bills->count() > 0)
                                     <div class="form-group">&nbsp;</div>
                                     <div class="table-responsive">
                                         <table class="table center-aligned-table ">
@@ -246,7 +246,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if(isset($next_bills) && !empty($next_bills) && count($next_bills) > 0)
+                                                @if(isset($next_bills) && !empty($next_bills))
                                                 @foreach($next_bills as $data)
                                                 <tr>
                                                     <td>{{$data->bill_prefix}}-{{$data->customer_bill_id}}</td>

@@ -20,7 +20,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if(isset($sizenprices) && !empty($sizenprices) && count($sizenprices) > 0)
+                                                @if(isset($sizenprices) && !empty($sizenprices) && $sizenprices->count() > 0)
                                                 @foreach($sizenprices as $data)
                                                 <tr class="">
                                                     <td>{{$data->serial_name}}</td>                   

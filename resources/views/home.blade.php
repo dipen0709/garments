@@ -52,7 +52,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if(isset($bills) && !empty($bills) && count($bills) > 0)
+                                                @if(isset($bills) && !empty($bills) && $bills->count() > 0)
                                                 @foreach($bills as $data)
                                                 <tr>
                                                     <td>{{$data->bill_prefix}}-{{$data->customer_bill_id}}</td>

@@ -71,7 +71,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if(isset($storage) && !empty($storage) && count($storage) > 0)
+                                                @if(isset($storage) && !empty($storage) && $storage->count() > 0)
                                                 @foreach($storage as $data)
                                                 <tr>
                                                     <td>{{$data->name}}</td>

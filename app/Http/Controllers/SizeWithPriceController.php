@@ -60,7 +60,7 @@ class SizeWithPriceController extends CommonController{
         $return_data['sizewithprice'] = $sizewithprice;
         $this->data['kapad_master'] = ClothMaster::select('id','name')->where('chr_delete','=',0)->get();
         $return_data['cloth_details'] = array();
-        if(!empty($sizewithprice) && count($sizewithprice) > 0) {
+        if(!empty($sizewithprice)) {
             if(isset($sizewithprice['cloth_details']) && $sizewithprice['cloth_details'] != ''){
                 $return_data['cloth_details'] = json_decode($sizewithprice['cloth_details']);
             }

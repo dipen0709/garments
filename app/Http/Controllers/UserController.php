@@ -55,7 +55,7 @@ class UserController extends CommonController{
         $users = User::find($request->id);
         $return_data['users'] = $users;
         
-        if(!empty($users) && count($users) > 0) {
+        if(!empty($users)) {
             return View('users/edit', array_merge($this->data, $return_data))->render();
         } else {
             return redirect()->route('home');

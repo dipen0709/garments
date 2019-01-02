@@ -20,7 +20,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if(isset($users) && !empty($users) && count($users) > 0)
+                                                @if(isset($users) && !empty($users) && $users->count() > 0)
                                                 @foreach($users as $data)
                                                 
                                                 

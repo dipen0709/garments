@@ -22,7 +22,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if(isset($customers) && !empty($customers) && count($customers) > 0)
+                                                @if(isset($customers) && !empty($customers))
                                                 @foreach($customers as $data)
                                                 <tr style="@if($data->chr_delete == 1){{"background-color: antiquewhite;"}} @endif">
                                                     <td>{{$data->name}}</td>

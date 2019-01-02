@@ -105,7 +105,7 @@ class BillController extends CommonController{
     
     public function edit(Request $request){
         $bills = Bill::find($request->id);
-        if(!empty($bills) && count($bills) > 0) {
+        if(!empty($bills)) {
             $return_data['bills'] = $bills;
             $order_count = Order::where('chr_delete','=',0)->where('bill_id','=',$request->id)->count();
             
